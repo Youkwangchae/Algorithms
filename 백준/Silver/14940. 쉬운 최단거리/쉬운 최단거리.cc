@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 #include <queue>
 
 using namespace std;
@@ -29,8 +28,6 @@ void bfs_Num()
 
 			if (a >= 1 && a <= n && b >= 1 && b <= m)
 			{
-				// cout << a << ", " << b << ", " << parent << endl;
-
 				// 갈 수 없는 곳, 출발 지점
 				if (V[a][b] != 1)
 				{
@@ -63,30 +60,9 @@ void bfs_Num()
 			}
 		}		
 	}
-
-	//// 네 방향 끝 줄을 탐색하면 바로 중지.
-	//if (a < 1 || a > n || b < 1 || b > n) return;	
-
-	//if (visited[a][b]) return;
-
-	//visited[a][b] = true;
-
-	//// 갈 수 없는 곳, 출발 지점
-	//if (V[a][b] != 1)
-	//{
-	//	ans[a][b] = 0;				
-	//}	
-	//else// 갈 수 있는 곳
-	//{
-	//	ans[a][b] = parent + 1;
-	//}
-
-	//bfs_Num(a, b + 1, ans[a][b]);
-	//bfs_Num(a, b - 1, ans[a][b]);
-	//bfs_Num(a + 1, b, ans[a][b]);
-	//bfs_Num(a - 1, b, ans[a][b]);
 }
 
+// unweighted graph에서 pathfinding => bfs로 해결.
 int main()
 {
 	ios_base::sync_with_stdio(false);
