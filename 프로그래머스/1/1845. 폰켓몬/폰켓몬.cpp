@@ -1,26 +1,16 @@
 #include <vector>
-#include <map>
+#include <set>
 using namespace std;
 
-map<int, int> M;
-vector<int>nums;
-vector<int> things;
 int solution(vector<int> nums)
 {
     int answer = 0;
 
-    for (int i = 0; i < nums.size(); i++)
-    {
-        M[nums[i]]++;
+    set<int> S(nums.begin(), nums.end());
 
-        if (M[nums[i]] == 1)
-            things.push_back(nums[i]);
-    }
-
-    if (things.size() < nums.size() / 2)
-        answer = things.size();
+    if (S.size() < nums.size() / 2)
+        answer = S.size();
     else
         answer = nums.size() / 2;
-
-    return answer;
+    return min(S.size(), nums.size() / 2);
 }
