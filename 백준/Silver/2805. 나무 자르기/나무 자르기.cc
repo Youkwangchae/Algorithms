@@ -32,8 +32,8 @@ int main()
 
 	long long l = 0;
 	long long r = A[n - 1];
-	unsigned long long mid = 0;
-	unsigned long long answer = 0;	
+	long long mid = 0;
+	long long answer = 0;	
 
 	while (l <= r)
 	{
@@ -64,8 +64,7 @@ int main()
 
 		if (lenSum > m)
 		{
-			if (answer < mid)
-				answer = mid;
+			answer = mid;
 			l = mid + 1;
 		}
 		else if(lenSum < m)
@@ -78,9 +77,6 @@ int main()
 			break;
 		}
 	}	
-
-	if (answer > A[n - 1]) answer = A[n - 1];
-	else if (answer < 0) answer = 0;
 
 	cout << answer;
 }
