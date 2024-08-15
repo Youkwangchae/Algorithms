@@ -1,50 +1,45 @@
 #include <iostream>
-#include <vector>
+#include <string>
 #include <algorithm>
 using namespace std;
 
 int n, m;
-vector<int> vec;
-vector<bool> visit;
-vector<int> temp;
+int arr[9];
+bool Visit[10000];
 
-void brute()
+void solve(string s, int count)
 {
-	if (temp.size() == m)
+	if (count == m)
 	{
-		for (int i = 0; i < m; i++)
-		{
-			cout << temp[i] << " ";
-		}
-		cout << "\n";
+		cout << s << '\n';		
+		return;
 	}
-	for (int i = 0; i < n; i++) {
-		if (visit[i]) continue;
-		temp.push_back(vec[i]);
-		visit[i] = true;
-		brute();
-		visit[i] = false;
-		temp.pop_back();
+	else
+	{
+		for (int i = 0; i < n; i++)
+		{			
+			if (!Visit[arr[i]])
+			{
+				Visit[arr[i]] = true;
+				solve(s + to_string(arr[i]) + " ", count + 1);
+				Visit[arr[i]] = false;
+			}			
+		}	
 	}
+	return;
 }
 
 int main()
 {
 	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-	
-	cin >> n >> m;
+	cin.tie(0);
+	cout.tie(0);
+	cin >> n >> m;	
 
-	int num;
 	for (int i = 0; i < n; i++)
-	{
-		cin >> num;
-		vec.push_back(num);
-		visit.push_back(false);
-	}
+		cin >> arr[i];
 
-	sort(vec.begin(), vec.end());
+	sort(arr, arr + n);
 
-	brute();
+	solve("", 0);
 }
