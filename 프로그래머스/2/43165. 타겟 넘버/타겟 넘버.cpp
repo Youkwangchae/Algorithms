@@ -19,18 +19,15 @@ void brute(vector<int> numbers, int target)
 
     while (count < numbers.size())
     {
-        num = 0;
         deque<int> temp;
         
         for (auto it : DQ)
         {
-            num++;
             temp.push_back(it + numbers[count]);
             temp.push_back(it - numbers[count]);
         }
-
-        for (int i = 0; i < num; i++)
-            DQ.pop_front();
+        
+        DQ.clear();
         
         for(auto t : temp)
             DQ.push_back(t);
