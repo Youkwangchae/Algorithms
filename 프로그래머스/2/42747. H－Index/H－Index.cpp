@@ -3,20 +3,15 @@
 #include <algorithm>
 using namespace std;
 
-bool cmp(int& A, int& B) {
-    return A > B;
-}
-
 int solution(vector<int> citations) {
     int answer = 0;
     int threshold = 0;
     int next = 0;
-    sort(citations.begin(), citations.end(), cmp);
+    sort(citations.begin(), citations.end(), greater<int>());
 
     for (int i = 0; i < citations.size(); i++)
     {
         int upCount = 0;    
-        int downCount = 0;
 
         for (int j = 0; j < citations.size(); j++)
         {
@@ -26,9 +21,7 @@ int solution(vector<int> citations) {
                 break;
         }
 
-        downCount = citations.size() - upCount;
-
-        if ((upCount >= citations[i]) && (downCount <= citations[i]))
+        if ((upCount >= citations[i]))
         {
             if (threshold < citations[i])
             {
